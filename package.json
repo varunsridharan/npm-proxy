@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "Simple Proxy Which Publishes In Github PKG & NPM",
   "main": "index.js",
-  "author": "Varun S",
+  "author": "Varun",
   "license": "MIT"
 }
