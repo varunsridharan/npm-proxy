@@ -43,10 +43,10 @@ jobs:
           registry-url: https://npm.pkg.github.com
           
       - name: "🚀  Publishing Release"
-        uses: g-actions/npm-publish@master
+        uses: tool3/publisher@v1
         with:
-          token: ${{ secrets.NPM_GH_TOKEN }}
-          registry: https://npm.pkg.github.com
+          github_token: ${{ secrets.NPM_GH_TOKEN }}
+          scope: ${{ env.GITHUB_REPOSITORY_OWNER }}
 
       - name: "⚡  Repository - After Hook"
         run: |
