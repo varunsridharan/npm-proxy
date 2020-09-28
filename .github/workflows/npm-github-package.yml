@@ -42,7 +42,7 @@ jobs:
           node-version: 12
 
       - name: "🚀  Publishing Release"
-        uses: JS-DevTools/npm-publish@v1
+        uses: g-actions/npm-publish@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           registry: https://npm.pkg.github.com
