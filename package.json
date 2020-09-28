@@ -1,8 +1,8 @@
 {
   "name": "vs-npm-proxy",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple Proxy Which Publishes In Github PKG & NPM",
   "main": "index.js",
-  "author": "",
-  "license": "ISC"
+  "author": "Varun Sridharan",
+  "license": "MIT"
 }
