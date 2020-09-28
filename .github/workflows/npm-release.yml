@@ -7,7 +7,7 @@ env:
 on:
   push:
     paths:
-      - 'package.json'
+      - 'packaage.json'
 
 jobs:
   publish-npm:
