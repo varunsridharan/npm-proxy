@@ -1,0 +1,26 @@
+name: On Release
+
+env:
+  DIST_LOCATION: "./dist/"
+  VS_WORKFLOW_TYPE: "github-package-registry-npm-release"
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  publish-npm:
+    name: "🚀  NPM Publisher"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "📥  Fetching Repository Contents"
+        uses: actions/checkout@master
+
+      - name: "💾  Github Repository Metadata"
+        uses: varunsridharan/action-repository-meta@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "💫  VS Utility"
+        uses: varunsridharan/action-vs-utility@master
