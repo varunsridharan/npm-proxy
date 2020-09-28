@@ -36,16 +36,11 @@ jobs:
           fi
           echo " "
           
-      - name: "📐  Setting Node"
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com
-          
       - name: "🚀  Publishing Release"
         uses: tool3/publisher@v1
         with:
           github_token: ${{ secrets.NPM_GH_TOKEN }}
+          npm_token: ${{ secrets.NPM_TOKEN }}
           scope: ${{ env.GITHUB_REPOSITORY_OWNER }}
 
       - name: "⚡  Repository - After Hook"
