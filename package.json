@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "Simple Proxy Which 2Publishes In Github & NPM NPM_GH_TOKEN",
   "main": "index.js",
-  "author": "Varun Sridharan",
+  "author": "Varun Srid5haran",
   "license": "MIT"
 }
