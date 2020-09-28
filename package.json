@@ -1,5 +1,5 @@
 {
-  "name": "@varunsridharan/vs-npm-proxy",
+  "name": "vs-npm-proxy",
   "version": "1.0.0",
   "description": "Simple Proxy Which Publishes In Github PKG & NPM",
   "main": "index.js",
