@@ -35,12 +35,18 @@ jobs:
             echo "⚠️ No Before Hook File Found : $VS_BEFORE_HOOK_FILE_LOCATION"
           fi
           echo " "
-
+          
+      - name: "📐  Setting Node"
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com
+          
       - name: "🚀  Publishing Release"
         uses: g-actions/npm-publish@master
         with:
           token: ${{ secrets.NPM_GH_TOKEN }}
-          registry: https://npm.pkg.github.com/
+          registry: https://npm.pkg.github.com
 
       - name: "⚡  Repository - After Hook"
         run: |
