@@ -5,9 +5,9 @@ env:
   VS_WORKFLOW_TYPE: "github-package-registry-npm-release"
 
 on:
-  release:
-    types:
-      - published
+  push:
+    branches: 
+      - master
 
 jobs:
   publish-npm:
