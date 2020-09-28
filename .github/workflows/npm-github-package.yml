@@ -39,7 +39,7 @@ jobs:
       - name: "🚀  Publishing Release"
         uses: g-actions/npm-publish@master
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.NPM_GH_TOKEN }}
           registry: https://npm.pkg.github.com/
 
       - name: "⚡  Repository - After Hook"
