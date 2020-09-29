@@ -43,10 +43,12 @@ jobs:
 
       - name: "⚡  NPM Hook"
         run: |
-          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          LOCAL_VERSION=$(node -p "require('./package.json').version")
           PKG_NAME=$(node -p "require('./package.json').name")
+          CURRENT_PKG_VERSION=$(npm view $PKG_NAME version)
           echo $CURRENT_VERSION
           echo $PKG_NAME
+          echo $CURRENT_PKG_VERSION
 
       - name: "⚡  Repository - After Hook"
         run: |
