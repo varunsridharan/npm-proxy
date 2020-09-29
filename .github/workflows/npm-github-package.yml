@@ -45,7 +45,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: "⚡  NPM Hook"
-        run:  npm publish
+        run:  npm login --registry=https://npm.pkg.github.com/ && npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
