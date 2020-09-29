@@ -43,7 +43,7 @@ jobs:
           registry-url: "https://npm.pkg.github.com/"
 
       - name: "🌀 Check Package Version Changes"
-        uses: technote-space/can-npm-publish-action@v1.1.1
+        uses: technote-space/can-npm-publish-action@v1
         id: check
 
       - name: "⬆️  Version Changed"
