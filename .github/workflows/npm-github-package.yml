@@ -37,12 +37,11 @@ jobs:
           echo " "
 
       - name: "📐  Setting Node"
-        uses: actions/setup-node@v1.4.3
+        uses: actions/setup-node@v1
         with:
+          node-version: '12.x'
           registry-url: 'https://npm.pkg.github.com'
-          node-version: 12
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          scope: ${{env.NPM_SOPE}}${{env.GITHUB_REPOSITORY_OWNER}}
 
       - name: "⚡  NPM Hook"
         run:  npm publish
