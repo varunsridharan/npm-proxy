@@ -41,11 +41,12 @@ jobs:
         with:
           node-version: 12
 
-      - name: "🚀  Publishing Release"
-        uses: g-actions/npm-publish@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          registry: https://npm.pkg.github.com
+      - name: "⚡  NPM Hook"
+        run: |
+          $CURRENT_VERSION=$(node -p "require('./package.json').version")
+          $PKG_NAME=$(node -p "require('./package.json').name")
+          echo $CURRENT_VERSION
+          echo $PKG_NAME
 
       - name: "⚡  Repository - After Hook"
         run: |
