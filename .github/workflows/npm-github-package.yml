@@ -11,7 +11,7 @@ on:
 
 jobs:
   publish-npm:
-    name: "🚀  NPM Publisher"
+    name: "🚀  Github Package Registry [NPM] Publisher"
     runs-on: ubuntu-latest
     steps:
       - name: "📥  Fetching Repository Contents"
@@ -35,12 +35,31 @@ jobs:
             echo "⚠️ No Before Hook File Found : $VS_BEFORE_HOOK_FILE_LOCATION"
           fi
           echo " "
-          
-      - name: "🚀  Publishing Release"
-        uses: g-actions/npm-publish@master
+
+      - name: "🌀 Check Package Version Changes"
+        uses: EndBug/version-check@v1
+        id: check
+
+      - name: "⬆️Version Changed"
+        if: steps.check.outputs.changed == 'true'
+        run: 'echo "Version change found! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
+
+      - name: "📐  Setting Node"
+        if: steps.check.outputs.changed == 'true'
+        uses: actions/setup-node@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          registry: https://npm.pkg.github.com
+          registry-url: "https://npm.pkg.github.com/"
+          scope: "@endbug"
+
+      - name: "⚡  Set up package for GPR"
+        if: steps.check.outputs.changed == 'true'
+        run: npm run gpr-setup
+
+      - name: "🚀  Publishing Release"
+        if: steps.check.outputs.changed == 'true'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "⚡  Repository - After Hook"
         run: |
