@@ -41,8 +41,9 @@ jobs:
         with:
           node-version: '12.x'
           registry-url: 'https://npm.pkg.github.com'
-          scope: ${{env.NPM_SOPE}}${{env.GITHUB_REPOSITORY_OWNER}}
-
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: "⚡  NPM Hook"
         run:  npm publish
         env:
