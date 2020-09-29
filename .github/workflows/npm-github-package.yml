@@ -43,12 +43,12 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@varunsridharan'
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_GH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: "⚡  NPM Hook"
         run:  npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_GH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "⚡  Repository - After Hook"
         run: |
