@@ -1,7 +1,7 @@
 {
   "name": "vs-npm-proxy",
   "version": "1.0.0",
-  "description": "Simple Prfoxy Wshich 2Publishes In Github & NPM NPM_GH_TOKEN",
+  "description": "Simple Proxy Wshich Publishes In Github & NPM NPM_GH_TOKEN",
   "main": "index.js",
   "author": "Varun Srid5haran",
   "license": "MIT"
