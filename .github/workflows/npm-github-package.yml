@@ -37,18 +37,16 @@ jobs:
           echo " "
 
       - name: "📐  Setting Node"
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v1.4.3
         with:
+          registry-url: 'https://npm.pkg.github.com'
           node-version: 12
 
       - name: "⚡  NPM Hook"
         run: |
-          LOCAL_VERSION=$(node -p "require('./package.json').version")
-          PKG_NAME=$(node -p "require('./package.json').name")
-          CURRENT_PKG_VERSION=$(npm view $PKG_NAME version)
-          echo $CURRENT_VERSION
-          echo $PKG_NAME
-          echo $CURRENT_PKG_VERSION
+         npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "⚡  Repository - After Hook"
         run: |
