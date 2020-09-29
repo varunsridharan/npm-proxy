@@ -36,27 +36,26 @@ jobs:
           fi
           echo " "
 
-      - name: "🌀 Check Package Version Changes"
-        uses: g-actions/version-check@master
-        id: check
-
-      - name: "⬆️Version Changed"
-        if: steps.check.outputs.changed == 'true'
-        run: 'echo "Version change found! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
-
       - name: "📐  Setting Node"
         if: steps.check.outputs.changed == 'true'
         uses: actions/setup-node@v1
         with:
           registry-url: "https://npm.pkg.github.com/"
-          scope: "@endbug"
+
+      - name: "🌀 Check Package Version Changes"
+        uses: technote-space/can-npm-publish-action@master
+        id: check
+
+      - name: "⬆️Version Changed"
+        if: steps.check.outputs.result == 'passed'
+        run: 'echo "Version change found!"'
 
       - name: "⚡  Set up package for GPR"
-        if: steps.check.outputs.changed == 'true'
+        if: steps.check.outputs.result == 'passed'
         run: npm run gpr-setup
 
       - name: "🚀  Publishing Release"
-        if: steps.check.outputs.changed == 'true'
+        if: steps.check.outputs.result == 'passed'
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
