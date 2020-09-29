@@ -37,16 +37,16 @@ jobs:
           echo " "
 
       - name: "📐  Setting Node"
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v1.4.2
         with:
-          node-version: '12.x'
-          registry-url: 'https://npm.pkg.github.com/'
+          node-version: 12
+          registry-url: 'https://npm.pkg.github.com'
           scope: '@varunsridharan'
 
       - name: Authenticate with the GitHub Package Registry
-        run:
-          echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" >
-          ~/.npmrc
+        run: |
+          cat package.json
+          echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
       - run: npm publish
         env:
