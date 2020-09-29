@@ -42,8 +42,10 @@ jobs:
           registry-url: "https://npm.pkg.github.com/"
 
       - name: "🌀 Check Package Version Changes"
-        uses: technote-space/can-npm-publish-action@v1
         id: check
+        uses: technote-space/can-npm-publish-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "⬆️  Version Changed"
         if: steps.check.outputs.result == 'passed'
