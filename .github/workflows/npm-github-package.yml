@@ -37,7 +37,7 @@ jobs:
           echo " "
 
       - name: "🌀 Check Package Version Changes"
-        uses: EndBug/version-check@v1
+        uses: g-actions/version-check@master
         id: check
 
       - name: "⬆️Version Changed"
