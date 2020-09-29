@@ -1,5 +1,5 @@
 {
-  "name": "vs-npm-proxy",
+  "name": "@varunsridharan/vs-npm-proxy",
   "version": "1.0.0",
   "description": "Lib Which   Pub4lishes In Github & NPM NPM_GH_TOKEN",
   "main": "index.js",
