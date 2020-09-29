@@ -44,9 +44,7 @@ jobs:
           scope: '@varunsridharan'
 
       - name: Authenticate with the GitHub Package Registry
-        run: |
-          cat package.json
-          echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+        run: echo "//npm.pkg.github.com:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
       - run: npm publish
         env:
