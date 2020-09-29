@@ -42,6 +42,7 @@ jobs:
           node-version: 12
           registry-url: 'https://npm.pkg.github.com'
           scope: '@varunsridharan'
+          always-auth: true
 
       - name: Authenticate with the GitHub Package Registry
         run: echo "//npm.pkg.github.com:_authToken=${{ secrets.NPM_GH_TOKEN }}" > ~/.npmrc
