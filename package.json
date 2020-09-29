@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "Simple prxy Which Publishes In Github & NPM NPM_GH_TOKEN",
   "main": "index.js",
-  "author": "Varun Srid5haran",
+  "author": "Varun Sridharan",
   "license": "MIT"
 }
