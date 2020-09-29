@@ -6,8 +6,8 @@ env:
 
 on:
   push:
-    paths:
-      - 'package.json'
+    branches: 
+      - master
 
 jobs:
   publish-npm:
@@ -39,27 +39,13 @@ jobs:
       - name: "📐  Setting Node"
         uses: actions/setup-node@v1
         with:
-          registry-url: "https://npm.pkg.github.com/"
-
-      - name: "🌀 Check Package Version Changes"
-        id: check
-        uses: technote-space/can-npm-publish-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: "⬆️  Version Changed"
-        if: steps.check.outputs.result == 'passed'
-        run: 'echo "Version change found!"'
-
-      - name: "⚡  Set up package for GPR"
-        if: steps.check.outputs.result == 'passed'
-        run: npm run gpr-setup
+          node-version: 12
 
       - name: "🚀  Publishing Release"
-        if: steps.check.outputs.result == 'passed'
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: g-actions/npm-publish@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: https://npm.pkg.github.com
 
       - name: "⚡  Repository - After Hook"
         run: |
